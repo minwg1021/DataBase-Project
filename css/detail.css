@@ -1,0 +1,15 @@
+* {
+  font-family: "Jua", sans-serif;
+}
+#item-info {
+  width: 50%;
+}
+
+.detail-pic {
+  width: 50%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  margin: auto;
+  border-radius: 10%;
+}

@@ -1,0 +1,49 @@
+body {
+  height: 100vh;
+  background-image: url("/assets/img/bg-chat.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+* {
+  font-family: "Jua", sans-serif;
+}
+
+.chat-content {
+  opacity: 0.5;
+  height: 450px;
+  overflow-y: scroll;
+  padding: 10px;
+  border: 1px solid lightgray;
+  background-color: lightyellow;
+}
+.chat-content li {
+  margin-top: 10px;
+}
+.text-small {
+  font-size: 12px;
+  color: gray;
+  margin-bottom: 0;
+}
+.list-group-item {
+  opacity: 0.5;
+  width: 250px;
+  height: 70px;
+  background-color: lightyellow;
+}
+.chat-box {
+  background: yellow;
+  color: black;
+  padding: 5px;
+  border-radius: 5px;
+  float: left;
+}
+.mine {
+  float: right;
+}
+
+#send {
+  font-size: 20px;
+  width: 80px;
+  height: 50px;
+}
