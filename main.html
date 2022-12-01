@@ -9,6 +9,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Chungbuk Market Place</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <script
       src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
       crossorigin="anonymous"
@@ -71,14 +72,9 @@
               <a class="nav-link" href="#item">물건 보기</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#facility">시설 보기</a>
+              <a class="nav-link" href="#about">커뮤니티</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./notice.html">공지사항</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./qna.html">Q&A</a>
-            </li>
+            <!-- 로그인 양식-->
             <li class="nav-item">
               <input
                 class="btn btn-primary"
@@ -87,26 +83,27 @@
                 value="로그인"
                 onclick="openLoginForm()"
               />
-              <div class="form-popup" id="myForm_login">
-                <form action="/action_page.php" class="form-container">
+              <div class="form-popup" id="myForm_login" >
+                <form action="login.php" class="form-container"  method="post">
                   <h1>로그인</h1>
                   <label for="email"><b>아이디</b></label>
                   <input
                     type="email"
                     placeholder="Enter ID"
-                    name="email"
-                    id="email"
+                    name="id"
+                    id="id"
                     required
                   />
                   <label for="psw"><b>비밀번호</b></label>
                   <input
                     type="password"
                     placeholder="Enter Password"
-                    name="psw"
+                    name="pw"
                     id="pw"
                     required
                   />
-                  <input type="button" class="btn" id="login" value="로그인"></button>
+                 
+                  <input type="submit" class="btn" id="login" value="로그인"></button>
                   <button
                     type="button"
                     class="btn cancel"
@@ -122,6 +119,8 @@
                 id="btn-logout"
                 value="로그아웃"
               />
+
+              <!-- 회원가입 양식-->
               <input
                 class="btn btn-primary"
                 type="button"
@@ -129,8 +128,9 @@
                 value="회원가입"
                 onclick="openRegisterForm()"
               />
+
               <div class="form-popup" id="myForm_register">
-                <form action="/action_page.php" class="form-container">
+                <form action="register.php" class="form-container"  method="post">
                   <h1>회원가입</h1>
                   <label for="name-new"><b>이름</b></label>
                   <input
@@ -156,7 +156,23 @@
                     id="pw-new"
                     required
                   />
-                  <input type="button" class="btn" id="register" value="회원가입"></button>
+                  <label for="email"><b>주소</b></label>
+                  <input
+                  type="text"
+                    placeholder="Enter Address"
+                    name="address"
+                    id="address-new"
+                    required
+                  />
+                  <label for="psw"><b>전화번호</b></label>
+                  <input
+                  type="text"
+                    placeholder="Enter Phone Number"
+                    name="pn"
+                    id="pn-new"
+                    required
+                  />
+                  <input type="submit" class="btn" id="register" value="회원가입"></button>
                   <button
                     type="button"
                     class="btn cancel"
@@ -226,12 +242,12 @@
       </div>
     </section>
     <div id="main_product_info"></div>
-    <section class="page-section" id="facility">
+    <section class="page-section" id="about">
       <div class="container">
         <div class="text-center">
           
           <h2 class="section-heading text-uppercase">우리동네 방방곡곡</h2>
-           <a type="button" class="btn btn-primary" href="./facility.html" style="margin-bottom: 20px">둘러보기</a>
+           <a type="button" class="btn btn-primary" href="./community.html" style="margin-bottom: 20px">둘러보기</a>
           <h3 class="section-subheading text-muted"></h3>
         </div>
         <ul class="timeline">
