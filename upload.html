@@ -33,24 +33,26 @@
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand" href="./main.html"
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"> <!-- 네브바-->
+      <div class="container"> <!--  페이지 전체 div -->
+        <a class="navbar-brand" href="./main.html"  
           ><img src="assets/img/logo.png" alt="..."
-        /></a>
-        <button
-          class="navbar-toggler"
+        /></a><!--  로고를 통해 메인페이지 이동  -->
+        
+        <!--  부트스트랩 메뉴 버튼-->
+        <button 
+          class="navbar-toggler" 
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarResponsive"
           aria-controls="navbarResponsive"
           aria-expanded="false"
           aria-label="Toggle navigation"
-        >
+        > 
           Menu
           <i class="fas fa-bars ms-1"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div class="collapse navbar-collapse" id="navbarResponsive"> <!--  네브바에 있는 버튼들  -->
           <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
             <li class="nav-item">
               <a class="nav-link" href="./product.html">물건 보기</a>
@@ -147,12 +149,15 @@
               </div>
             </li>
           </ul>
-        </div>
+        </div> 
       </div>
-    </nav>
-    <div class="container mt-3">
+    </nav><!--  네브바 끝 -->
+    <div class="container mt-3"> 
+      <!--  본문 시작 -->
+      <form method="post" action="upload.php">
       <h2 style="padding-bottom: 40px;">게시물 등록</h2>
       <input
+        name = "pName"
         type="text"
         class="form-control mt-2"
         id="title"
@@ -160,12 +165,14 @@
         style="padding-bottom: 15px;"
       />
       <textarea
+        name = "description"
         class="form-control mt-2"
         id="content"
         placeholder="내용"
         style="padding-bottom: 100px;"
       ></textarea>
       <input
+      name = "price"
         type="text"
         class="form-control mt-2"
         id="price"
@@ -179,7 +186,8 @@
           <!-- <img src="" id="preview"/> -->
         <!-- </li> -->
       <!-- </ul> -->
-      <button class="btn btn-primary mt-3" id="upload">올리기</button>
+      <button class="btn btn-primary mt-3" id="upload" type = "submit">올리기</button>
+    </form>
     </div>
 
     <script
@@ -199,7 +207,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
 
-    <script>
+    <!-- <script> 파이어 베이스 주석
       const firebaseConfig = {
         apiKey: "AIzaSyC4C5jIAH_dzNQzc-gSXLrfcyR7k0IUG2g",
         authDomain: "cbmp-17038.firebaseapp.com",
@@ -212,9 +220,9 @@
       };
 
       firebase.initializeApp(firebaseConfig);
-    </script>
+    </script> -->
 
-    <script src="./js/upload.js"></script>
+    <!-- <script src="./js/upload.js"></script>-->
     <script src="./js/login.js"></script>
     <script src="./js/open_loginForm.js"></script>
     <script src="./js/open_registerForm.js"></script>
