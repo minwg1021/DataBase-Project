@@ -14,7 +14,10 @@ $startLimit = ($pageNumber-1)*$pageCount;//쿼리의 limit 시작 부분
 $firstPageNumber  = $_GET['firstPageNumber'];
 
 
-$sql = "select * from board where 1=1";
+$sql = "select b.*, if((now() - regdate)<=86400,1,0) as newid
+,(select count(*) from memo m where m.status=1 and m.bid=b.bid) as memocnt
+,(select m.regdate from memo m where m.status=1 and m.bid=b.bid order by m.memoid desc limit 1) as memodate
+from board b where 1=1";
 $sql .= " and status=1";
 $sql .= $search_where;
 $order = " order by ifnull(parent_id, bid) desc, bid asc";
@@ -62,7 +65,7 @@ if($firstPageNumber > $totalPage) {
                 $idNumber = $totalCount - ($pageNumber-1)*$pageCount;
                 foreach($rsc as $r){
                     //검색어만 하이라이트 해준다.
-                    $subject = str_replace($search_keyword,"<span style='color:red;'>".$search_keyword."<span>",$r->subject);
+                    $subject = str_replace($search_keyword,"<span style='color:red;'>".$search_keyword."</span>",$r->subject);
                    
             ?>
 
@@ -75,7 +78,16 @@ if($firstPageNumber > $totalPage) {
                                 echo "&nbsp;&nbsp;";
                             }
                         ?>  
-                    <a href="/database-project/func/qna/view.php?bid=<?php echo $r->bid;?>"><?php echo $subject?></a></td>
+                    <a href="/database-project/func/qna/view.php?bid=<?php echo $r->bid;?>"><?php echo $subject?></a>
+                    <?php if($r->memocnt){?>
+                        <span <?php if((time()-strtotime($r->memodate))<=86400){ echo "style='color:red;'";}?>>
+                            [<?php echo $r->memocnt;?>]
+                        </span>
+                    <?php }?>
+                    <?php if($r->newid){?>
+                        <span class="badge bg-danger">New</span>
+                    <?php }?>
+                </td>
                     <td><?php echo $r->regdate?></td>
                 </tr>
             <?php }?>
@@ -87,7 +99,7 @@ if($firstPageNumber > $totalPage) {
         <form method="get" action="<?php echo $_SERVER["PHP_SELF"]?>">
         <div class="input-group mb-12" style="margin:auto;width:50%;">
                 <input type="text" class="form-control" name="search_keyword" id="search_keyword" placeholder="제목과 내용에서 검색합니다." value="<?php echo $search_keyword;?>" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="search">검색</button>
+                <button class="btn btn-outline-secondary" type="submit" id="search">검색</button>
         </div>
         </form>
         <!-- <p>
@@ -116,14 +128,14 @@ if($firstPageNumber > $totalPage) {
                 if($_SESSION['UID']){
             ?>
                 <a href="/database-project/func/qna/write.php"><button type="button" class="btn btn-primary">등록</button><a>
-               <a href="/database-project/func/qna/member/logout.php"><button type="button" class="btn btn-primary">로그아웃</button><a>
+                <a href="/database-project/func/qna/logout.php"><button type="button" class="btn btn-primary">로그아웃</button><a>
             <?php
                 }else{
             ?>
-                <a href="/database-project/func/qna/member/login.php"><button type="button" class="btn btn-primary">로그인</button><a>
-                <a href="/database-project/func/qna/member/signup.php"><button type="button" class="btn btn-primary">회원가입</button><a>
+                <a href="/database-project/func/qna/login.php"><button type="button" class="btn btn-primary">로그인</button><a>
+                <a href="/database-project/func/qna/signup.php"><button type="button" class="btn btn-primary">회원가입</button><a>
             <?php
-               }
+                }
             ?>
         </p>
 
@@ -153,7 +165,6 @@ if($firstPageNumber > $totalPage) {
                     }
                 }
         });
-        return false;
     });
 </script>
 

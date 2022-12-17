@@ -10,6 +10,13 @@ $memo_result = $mysqli->query($query) or die("query error => ".$mysqli->error);
 while($mrs = $memo_result->fetch_object()){
     $memoArray[]=$mrs;
 }
+
+$query2="select type,count(*) as cnt from recommend r where bid=".$rs->bid." group by type";
+$rec_result = $mysqli->query($query2) or die("query error => ".$mysqli->error);
+while($recs = $rec_result->fetch_object()){
+  $recommend[$recs->type] = $recs->cnt;
+}
+
 ?>
       <h3 class="pb-4 mb-4 fst-italic border-bottom" style="text-align:center;">
         - 게시판 보기 -
@@ -23,11 +30,17 @@ while($mrs = $memo_result->fetch_object()){
         <p>
           <?php echo $rs->content;?>
         </p>
+        <div style="text-align:center;">
+          <button type="button" class="btn btn-lg btn-primary" id="like_button">추천&nbsp;<span id="like"><?php echo number_format($recommend['like']);?></span></button>
+          <button type="button" class="btn btn-lg btn-warning" id="hate_button">반대&nbsp;<span id="hate"><?php echo number_format($recommend['hate']);?></span></button>
+        </div>
         <hr>
       </article>
 
+     
+
       <nav class="blog-pagination" aria-label="Pagination">
-        <a class="btn btn-outline-secondary" href="/database-project/func/qna/index.php">목록</a>
+        <a class="btn btn-outline-secondary" href="/database-project/func/qna/qna_main.php">목록</a>
         <a class="btn btn-outline-secondary" href="/database-project/func/qna/write.php?parent_id=<?php echo $rs->bid;?>">답글</a>
         <a class="btn btn-outline-secondary" href="/database-project/func/qna/write.php?bid=<?php echo $rs->bid;?>">수정</a>
         <a class="btn btn-outline-secondary" href="/database-project/func/qna/delete.php?bid=<?php echo $rs->bid;?>">삭제</a>
@@ -62,6 +75,76 @@ while($mrs = $memo_result->fetch_object()){
       </div>
 
 <script>
+
+  $("#like_button").click(function () {
+
+    if(!confirm('추천하시겠습니까?')){
+      return false;
+    }
+     
+      var data = {
+          type : 'like' ,
+          bid : <?php echo $bid;?>
+      };
+          $.ajax({
+              async : false ,
+              type : 'post' ,
+              url : 'like_hate.php' ,
+              data  : data ,
+              dataType : 'json' ,
+              error : function() {} ,
+              success : function(return_data) {
+                if(return_data.result=="member"){
+                  alert('로그인 하십시오.');
+                  return;
+                }else if(return_data.result=="check"){
+                  alert('이미 추천이나 반대를 하셨습니다.');
+                  return;
+                }else if(return_data.result=="no"){
+                  alert('다시한번 시도해주십시오.');
+                  return;
+                }else{
+                  $("#like").text(return_data.cnt);
+                }
+              }
+          });
+  });
+
+  $("#hate_button").click(function () {
+
+    if(!confirm('반대하시겠습니까?')){
+      return false;
+    }
+     
+      var data = {
+          type : 'hate' ,
+          bid : <?php echo $bid;?>
+      };
+          $.ajax({
+              async : false ,
+              type : 'post' ,
+              url : 'like_hate.php' ,
+              data  : data ,
+              dataType : 'json' ,
+              error : function() {} ,
+              success : function(return_data) {
+                if(return_data.result=="member"){
+                  alert('로그인 하십시오.');
+                  return;
+                }else if(return_data.result=="check"){
+                  alert('이미 추천이나 반대를 하셨습니다.');
+                  return;
+                }else if(return_data.result=="no"){
+                  alert('다시한번 시도해주십시오.');
+                  return;
+                }else{
+                  $("#hate").text(return_data.cnt);
+                }
+              }
+          });
+  });
+
+
   $("#memo_button").click(function () {
    
         var data = {
