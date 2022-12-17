@@ -13,7 +13,7 @@ if($rs){
     $_SESSION['UID']= $rs->userid;
     $_SESSION['UNAME']= $rs->username;
 
-    echo "<script>alert('어서오십시오.');location.href='/database-project/func/qna/qna_main.php';</script>";
+    echo "<script>alert('어서오십시오.');location.href='/database-project/main.php';</script>";
     exit;
 
 }else{

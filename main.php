@@ -73,20 +73,29 @@
               <a class="nav-link" href="#introduce">소개</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="/database-project/func/qna/qna_main.php">Q&A</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#item">물건 보기</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#about">커뮤니티</a>
             </li>
-            <!-- 로그인 양식-->
             <li class="nav-item">
-              <input
-                class="btn btn-primary"
-                type="button"
-                id="btn-login"
-                value="로그인"
-                onclick="openLoginForm()"
-              />
+            <?php
+                if(isset($_SESSION['UID'])){
+            ?>
+                <a href="/database-project/func/qna/write.php"><button type="button" class="btn btn-primary">등록</button><a>
+                <a href="/database-project/func/qna/member/logout.php"><button type="button" class="btn btn-primary">로그아웃</button><a>
+            <?php
+                }else{
+            ?>
+                <a href="/database-project/func/qna/member/login.php"><button type="button" class="btn btn-primary">로그인</button><a>
+                <a href="/database-project/func/qna/member/signup.php"><button type="button" class="btn btn-primary">회원가입</button><a>
+            <?php
+                }
+            ?>
+              <!-- 로그인 양식
               <div class="form-popup" id="myForm_login" >
                 <form action="./func/login.php" class="form-container"  method="post">
                   <h1>로그인</h1>
@@ -122,17 +131,10 @@
                 type="button"
                 id="btn-logout"
                 value="로그아웃"
-              />
+              />-->
 
-              <!-- 회원가입 양식-->
-              <input
-                class="btn btn-primary"
-                type="button"
-                id="btn-register"
-                value="회원가입"
-                onclick="openRegisterForm()"
-              />
-
+            
+              <!-- 회원가입 양식
               <div class="form-popup" id="myForm_register">
                 <form action="./func/register.php" class="form-container"  method="post">
                   <h1>회원가입</h1>
@@ -185,7 +187,7 @@
                     Close
                   </button>
                 </form>
-              </div>
+              </div>-->
             </li>
           </ul>
         </div>
