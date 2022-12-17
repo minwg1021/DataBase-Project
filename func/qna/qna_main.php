@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/header.php";
 
 $search_keyword = $_GET['search_keyword'];
@@ -128,12 +128,12 @@ if($firstPageNumber > $totalPage) {
                 if($_SESSION['UID']){
             ?>
                 <a href="/database-project/func/qna/write.php"><button type="button" class="btn btn-primary">등록</button><a>
-                <a href="/database-project/func/qna/logout.php"><button type="button" class="btn btn-primary">로그아웃</button><a>
+                <a href="/database-project/func/qna/member/logout.php"><button type="button" class="btn btn-primary">로그아웃</button><a>
             <?php
                 }else{
             ?>
-                <a href="/database-project/func/qna/login.php"><button type="button" class="btn btn-primary">로그인</button><a>
-                <a href="/database-project/func/qna/signup.php"><button type="button" class="btn btn-primary">회원가입</button><a>
+                <a href="/database-project/func/qna/member/login.php"><button type="button" class="btn btn-primary">로그인</button><a>
+                <a href="/database-project/func/qna/member/signup.php"><button type="button" class="btn btn-primary">회원가입</button><a>
             <?php
                 }
             ?>

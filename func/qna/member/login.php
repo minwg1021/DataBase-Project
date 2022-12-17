@@ -19,5 +19,5 @@ include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/header.php";
         </form>
     
 <?php
-include $_SERVER["DOCUMENT_ROOT"]."/shopping_mall/footer.php";
+include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/footer.php";
 ?>
