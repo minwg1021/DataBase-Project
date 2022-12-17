@@ -1,3 +1,7 @@
+<?php
+  require_once './func/dbconfig.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -42,7 +46,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="./main.html"
+        <a class="navbar-brand" href="./main.php"
           ><img src="assets/img/logo.png" alt="..."
         /></a>
         <button
@@ -60,16 +64,16 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="./product.html">물건 보기</a>
+              <a class="nav-link" href="./product.php">물건 보기</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./facility.html">시설 보기</a>
+              <a class="nav-link" href="./facility.php">시설 보기</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./notice.html">공지사항</a>
+              <a class="nav-link" href="./notice.php">공지사항</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./qna.html">Q&A</a>
+              <a class="nav-link" href="./qna.php">Q&A</a>
             </li>
             <li class="nav-item">
               <input
@@ -80,7 +84,7 @@
                 onclick="openLoginForm()"
               />
               <div class="form-popup" id="myForm_login">
-                <form action="/action_page.php" class="form-container">
+                <form action="./func/login.php" class="form-container">
                   <h1>로그인</h1>
                   <label for="email"><b>아이디</b></label>
                   <input
@@ -122,7 +126,7 @@
                 onclick="openRegisterForm()"
               />
               <div class="form-popup" id="myForm_register">
-                <form action="/action_page.php" class="form-container">
+                <form action="./func/register.php" class="form-container">
                   <h1>회원가입</h1>
                   <label for="name-new"><b>이름</b></label>
                   <input
@@ -163,35 +167,47 @@
         </div>
       </div>
     </nav>
-    <table class="table" style="width: 70%; margin: auto; margin-top: 100px;">
-      <thead>
-        <tr>
-          <th scope="col">번호</th>
-          <th scope="col">글쓴이</th>
-          <th scope="col">제목</th>
-          <th scope="col">등록일</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>관리자</td>
-          <td>이벤트 공지사항입니다</td>
-          <td>2022.11.10</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>관리자</td>
-          <td>채팅 공지사항</td>
-          <td>2022.11.05</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>관리자</td>
-          <td>CBMP 중고거래 플랫폼입니다.</td>
-          <td>2022.09.17</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="container" style="display: flex; align-items: center; flex-direction: column;">
+      <table class="table" style="width: 70%; margin: auto; margin-top: 100px;">
+        <thead>
+          <tr>
+            <th scope="col">번호</th>
+            <th scope="col">글쓴이</th>
+            <th scope="col">제목</th>
+            <th scope="col">등록일</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>익명A</td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16" style="margin-right: 5px">
+              <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
+            </svg>상품 관련 문의</td>
+            <td>2022.11.01</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>익명B</td>
+            <td>상품 관련 문의</td>
+            <td>2022.10.21</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>익명C</td>
+            <td>홈페이지 이용 관련 문의</td>
+            <td>2022.05.10</td>
+          </tr>
+        </tbody>
+  
+      </table>
+      <input
+      class="btn btn-primary"
+      type="button"
+      id="btn-login"
+      value="등록"
+      style="margin-top: 10px;"
+    />
+    </div>
   </body>
 </html>

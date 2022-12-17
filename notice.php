@@ -1,41 +1,52 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chungbuk Market Place</title>
+<?php
+  require_once './func/dbconfig.php';
+?>
 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Chungbuk Market Place</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-
+    <link rel="stylesheet" href="./css/main_styles.css" />
     <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
       crossorigin="anonymous"
     ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
+      rel="stylesheet"
+      type="text/css"
+    />
     <link
     href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Jua&family=Square+Peg&family=Water+Brush&family=Yanone+Kaffeesatz:wght@700&display=swap"
     rel="stylesheet"
   />
-    <link rel="stylesheet" href="./css/upload.css">
-    <link rel="stylesheet" href="./css/main_styles.css" />
-    <link rel="stylesheet" href="./css/edit.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="./main.html"
+        <a class="navbar-brand" href="./main.php"
           ><img src="assets/img/logo.png" alt="..."
         /></a>
         <button
@@ -53,16 +64,16 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="./product.html">물건 보기</a>
+              <a class="nav-link" href="./product.php">물건 보기</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./facility.html">시설 보기</a>
+              <a class="nav-link" href="./facility.php">시설 보기</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./notice.html">공지사항</a>
+              <a class="nav-link" href="./notice.php">공지사항</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./qna.html">Q&A</a>
+              <a class="nav-link" href="./qna.php">Q&A</a>
             </li>
             <li class="nav-item">
               <input
@@ -73,7 +84,7 @@
                 onclick="openLoginForm()"
               />
               <div class="form-popup" id="myForm_login">
-                <form action="/action_page.php" class="form-container">
+                <form action="./func/login.php" class="form-container">
                   <h1>로그인</h1>
                   <label for="email"><b>아이디</b></label>
                   <input
@@ -115,7 +126,7 @@
                 onclick="openRegisterForm()"
               />
               <div class="form-popup" id="myForm_register">
-                <form action="/action_page.php" class="form-container">
+                <form action="./func/register.php" class="form-container">
                   <h1>회원가입</h1>
                   <label for="name-new"><b>이름</b></label>
                   <input
@@ -156,103 +167,35 @@
         </div>
       </div>
     </nav>
-    <div class="container mt-3">
-      <h2 style="padding-bottom: 40px;">게시물 수정</h2>
-      <input
-        type="text"
-        class="form-control mt-2"
-        id="title"
-        placeholder="제목"
-        style="padding-bottom: 15px;"
-      />
-      <textarea
-        class="form-control mt-2"
-        id="content"
-        placeholder="내용"
-        style="padding-bottom: 100px;"
-      ></textarea>
-      <input
-        type="text"
-        class="form-control mt-2"
-        id="price"
-        placeholder="가격"
-        style="padding-bottom: 15px;"
-      />
-      <button class="btn btn-primary mt-3" id="send">수정하기</button>
-    </div>
-
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
-
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-
-    <script>
-      // Import the functions you need from the SDKs you need
-
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyC4C5jIAH_dzNQzc-gSXLrfcyR7k0IUG2g",
-        authDomain: "cbmp-17038.firebaseapp.com",
-        databaseURL:
-          "https://cbmp-17038-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "cbmp-17038",
-        storageBucket: "cbmp-17038.appspot.com",
-        messagingSenderId: "742707500532",
-        appId: "1:742707500532:web:d7796138ddd0463832d5a1",
-      }; //파이어베이스 코드
-
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-    </script>
-
-    <script>
-      const db = firebase.firestore();
-      const storage = firebase.storage();
-
-      var 쿼리스트링 = new URLSearchParams(window.location.search);
-      쿼리스트링.get("id"); //url에 숨겨진 query string 찾는법
-
-      db.collection("product")
-        .doc(쿼리스트링.get("id"))
-        .get()
-        .then((result) => {
-          //게시물 id
-          console.log(result.data()); //게시물 데이터들
-          $("#title").val(result.data().제목); //기존 제목 데이터 보이기
-          $("#content").val(result.data().내용); //기존 내용 데이터 보이기
-          $("#price").val(result.data().가격); //기존 가격 데이터 보이기
-        });
-
-      $("#send").click(function () {
-        var 바꿀거 = {
-          제목: $("#title").val(), //수정될 제목 데이터
-          내용: $("#content").val(), //수정될 내용 데이터
-          가격: $("#price").val(), //수정될 가격 데이터
-        };
-        db.collection("product").doc(쿼리스트링.get("id")).update(바꿀거); //수정한 부분 수정
-
-        setTimeout(() => window.location.href = "/detail.html?id=" + 쿼리스트링.get("id"), 1000);
-      });
-    </script>
-    <script src="./js/login.js"></script>
-    <script src="./js/open_loginForm.js"></script>
-    <script src="./js/open_registerForm.js"></script>
-    <script src="./js/navbar.js"></script>
-    <script src="./js/preview_image.js"></script>
+    <table class="table" style="width: 70%; margin: auto; margin-top: 100px;">
+      <thead>
+        <tr>
+          <th scope="col">번호</th>
+          <th scope="col">글쓴이</th>
+          <th scope="col">제목</th>
+          <th scope="col">등록일</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>관리자</td>
+          <td>이벤트 공지사항입니다</td>
+          <td>2022.11.10</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>관리자</td>
+          <td>채팅 공지사항</td>
+          <td>2022.11.05</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>관리자</td>
+          <td>CBMP 중고거래 플랫폼입니다.</td>
+          <td>2022.09.17</td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>

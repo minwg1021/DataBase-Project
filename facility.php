@@ -1,3 +1,7 @@
+<?php
+  require_once './func/dbconfig.php';
+?>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -26,7 +30,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand" href="./main.html"
+      <a class="navbar-brand" href="./main.php"
         ><img src="assets/img/logo.png" alt="..."
       /></a>
       <button
@@ -44,16 +48,16 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="./product.html">물건 보기</a>
+            <a class="nav-link" href="./product.php">물건 보기</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./facility.html">시설 보기</a>
+            <a class="nav-link" href="./facility.php">시설 보기</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./notice.html">공지사항</a>
+            <a class="nav-link" href="./notice.php">공지사항</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./qna.html">Q&A</a>
+            <a class="nav-link" href="./qna.php">Q&A</a>
           </li>
           <li class="nav-item">
             <input

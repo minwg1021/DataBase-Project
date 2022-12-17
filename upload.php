@@ -1,75 +1,74 @@
+<?php
+  require_once './func/dbconfig.php';
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chungbuk Market Place</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Bootstrap CSS -->
+  
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="./css/main_styles.css" />
+
     <script
-      src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
-      rel="stylesheet"
-      type="text/css"
-    />
     <link
     href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Jua&family=Square+Peg&family=Water+Brush&family=Yanone+Kaffeesatz:wght@700&display=swap"
     rel="stylesheet"
   />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="./css/main_styles.css" rel="stylesheet" />
+    <link href="./css/upload.css" rel="stylesheet" />
+    </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand" href="./main.html"
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"> <!-- 네브바-->
+      <div class="container"> <!--  페이지 전체 div -->
+        <a class="navbar-brand" href="./main.php"  
           ><img src="assets/img/logo.png" alt="..."
-        /></a>
-        <button
-          class="navbar-toggler"
+        /></a><!--  로고를 통해 메인페이지 이동  -->
+        
+        <!--  부트스트랩 메뉴 버튼-->
+        <button 
+          class="navbar-toggler" 
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarResponsive"
           aria-controls="navbarResponsive"
           aria-expanded="false"
           aria-label="Toggle navigation"
-        >
+        > 
           Menu
           <i class="fas fa-bars ms-1"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div class="collapse navbar-collapse" id="navbarResponsive"> <!--  네브바에 있는 버튼들  -->
           <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="./product.html">물건 보기</a>
+              <a class="nav-link" href="./product.php">물건 보기</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./facility.html">시설 보기</a>
+              <a class="nav-link" href="./facility.php">시설 보기</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./notice.html">공지사항</a>
+              <a class="nav-link" href="./notice.php">공지사항</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./qna.html">Q&A</a>
+              <a class="nav-link" href="./qna.php">Q&A</a>
             </li>
             <li class="nav-item">
               <input
@@ -80,7 +79,7 @@
                 onclick="openLoginForm()"
               />
               <div class="form-popup" id="myForm_login">
-                <form action="/action_page.php" class="form-container">
+                <form action="./func/login.php" class="form-container">
                   <h1>로그인</h1>
                   <label for="email"><b>아이디</b></label>
                   <input
@@ -122,7 +121,7 @@
                 onclick="openRegisterForm()"
               />
               <div class="form-popup" id="myForm_register">
-                <form action="/action_page.php" class="form-container">
+                <form action="./func/register.php" class="form-container">
                   <h1>회원가입</h1>
                   <label for="name-new"><b>이름</b></label>
                   <input
@@ -160,50 +159,61 @@
               </div>
             </li>
           </ul>
-        </div>
+        </div> 
       </div>
-    </nav>
-    <div class="container" style="display: flex; align-items: center; flex-direction: column;">
-      <table class="table" style="width: 70%; margin: auto; margin-top: 100px;">
-        <thead>
-          <tr>
-            <th scope="col">번호</th>
-            <th scope="col">글쓴이</th>
-            <th scope="col">제목</th>
-            <th scope="col">등록일</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>익명A</td>
-            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16" style="margin-right: 5px">
-              <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
-            </svg>상품 관련 문의</td>
-            <td>2022.11.01</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>익명B</td>
-            <td>상품 관련 문의</td>
-            <td>2022.10.21</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>익명C</td>
-            <td>홈페이지 이용 관련 문의</td>
-            <td>2022.05.10</td>
-          </tr>
-        </tbody>
-  
-      </table>
+    </nav><!--  네브바 끝 -->
+    <div class="container mt-3"> 
+      <!--  본문 시작 -->
+      <form method="post" action="upload.php">
+      <h2 style="padding-bottom: 40px;">게시물 등록</h2>
       <input
-      class="btn btn-primary"
-      type="button"
-      id="btn-login"
-      value="등록"
-      style="margin-top: 10px;"
-    />
+        name = "pName"
+        type="text"
+        class="form-control mt-2"
+        id="title"
+        placeholder="제목"
+        style="padding-bottom: 15px;"
+      />
+      <textarea
+        name = "description"
+        class="form-control mt-2"
+        id="content"
+        placeholder="내용"
+        style="padding-bottom: 100px;"
+      ></textarea>
+      <input
+      name = "price"
+        type="text"
+        class="form-control mt-2"
+        id="price"
+        placeholder="가격"
+        style="padding-bottom: 15px;"
+      />
+      <!-- <ul style="padding-top: 50px; padding-left : 10px;"> -->
+        <!-- <li class="upload_image"> -->
+          <!-- 이미지 등록 -->
+          <input class="form-control mt-2" type="file" id="image"/>
+          <!-- <img src="" id="preview"/> -->
+        <!-- </li> -->
+      <!-- </ul> -->
+      <button class="btn btn-primary mt-3" id="upload" type = "submit">올리기</button>
+    </form>
     </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/login.js"></script>
+    <script src="./js/open_loginForm.js"></script>
+    <script src="./js/open_registerForm.js"></script>
+    <script src="./js/navbar.js"></script>
+    <script src="./js/preview_image.js"></script>
   </body>
 </html>

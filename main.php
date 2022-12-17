@@ -1,3 +1,7 @@
+<?php 
+  require_once './func/dbconfig.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -84,7 +88,7 @@
                 onclick="openLoginForm()"
               />
               <div class="form-popup" id="myForm_login" >
-                <form action="login.php" class="form-container"  method="post">
+                <form action="./func/login.php" class="form-container"  method="post">
                   <h1>로그인</h1>
                   <label for="email"><b>아이디</b></label>
                   <input
@@ -130,7 +134,7 @@
               />
 
               <div class="form-popup" id="myForm_register">
-                <form action="register.php" class="form-container"  method="post">
+                <form action="./func/register.php" class="form-container"  method="post">
                   <h1>회원가입</h1>
                   <label for="name-new"><b>이름</b></label>
                   <input
@@ -236,7 +240,7 @@
           <h3 class="section-subheading text-muted">
             우리 동네에는 어떤 물품들이 올라왔을까요?
           </h3>
-          <a type="button" class="btn btn-primary" href="./product.html" style="margin-bottom: 20px">둘러보기</a>
+          <a type="button" class="btn btn-primary" href="./product.php" style="margin-bottom: 20px">둘러보기</a>
         </div>
         <div class="row" id="main_product"></div>
       </div>
@@ -247,7 +251,7 @@
         <div class="text-center">
           
           <h2 class="section-heading text-uppercase">우리동네 방방곡곡</h2>
-           <a type="button" class="btn btn-primary" href="./community.html" style="margin-bottom: 20px">둘러보기</a>
+           <a type="button" class="btn btn-primary" href="./community.php" style="margin-bottom: 20px">둘러보기</a>
           <h3 class="section-subheading text-muted"></h3>
         </div>
         <ul class="timeline">
@@ -347,32 +351,11 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-
-    <script>
-      const firebaseConfig = {
-        apiKey: "AIzaSyC4C5jIAH_dzNQzc-gSXLrfcyR7k0IUG2g",
-        authDomain: "cbmp-17038.firebaseapp.com",
-        databaseURL:
-          "https://cbmp-17038-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "cbmp-17038",
-        storageBucket: "cbmp-17038.appspot.com",
-        messagingSenderId: "742707500532",
-        appId: "1:742707500532:web:d7796138ddd0463832d5a1",
-      };
-
-      firebase.initializeApp(firebaseConfig);
-    </script>
     <script src="./js/login.js"></script>
     <script src="./js/register.js"></script>
     <script src="./js/navbar.js"></script>

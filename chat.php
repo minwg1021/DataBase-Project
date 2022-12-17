@@ -1,3 +1,6 @@
+<?php 
+  require_once './func/dbconfig.php';
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chungbuk Market Place</title>
-  
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -29,42 +32,39 @@
     rel="stylesheet"
   />
     <link href="./css/main_styles.css" rel="stylesheet" />
-    <link href="./css/upload.css" rel="stylesheet" />
-    </style>
+    <link rel="stylesheet" href="./css/chat.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"> <!-- 네브바-->
-      <div class="container"> <!--  페이지 전체 div -->
-        <a class="navbar-brand" href="./main.html"  
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="./main.php"
           ><img src="assets/img/logo.png" alt="..."
-        /></a><!--  로고를 통해 메인페이지 이동  -->
-        
-        <!--  부트스트랩 메뉴 버튼-->
-        <button 
-          class="navbar-toggler" 
+        /></a>
+        <button
+          class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarResponsive"
           aria-controls="navbarResponsive"
           aria-expanded="false"
           aria-label="Toggle navigation"
-        > 
+        >
           Menu
           <i class="fas fa-bars ms-1"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive"> <!--  네브바에 있는 버튼들  -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="./product.html">물건 보기</a>
+              <a class="nav-link" href="./product.php">물건 보기</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./facility.html">시설 보기</a>
+              <a class="nav-link" href="./facility.php">시설 보기</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./notice.html">공지사항</a>
+              <a class="nav-link" href="./notice.php">공지사항</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./qna.html">Q&A</a>
+              <a class="nav-link" href="./qna.php">Q&A</a>
             </li>
             <li class="nav-item">
               <input
@@ -75,7 +75,7 @@
                 onclick="openLoginForm()"
               />
               <div class="form-popup" id="myForm_login">
-                <form action="/action_page.php" class="form-container">
+                <form action="./func/login.php" class="form-container">
                   <h1>로그인</h1>
                   <label for="email"><b>아이디</b></label>
                   <input
@@ -117,7 +117,7 @@
                 onclick="openRegisterForm()"
               />
               <div class="form-popup" id="myForm_register">
-                <form action="/action_page.php" class="form-container">
+                <form action="./func/register.php" class="form-container">
                   <h1>회원가입</h1>
                   <label for="name-new"><b>이름</b></label>
                   <input
@@ -155,45 +155,26 @@
               </div>
             </li>
           </ul>
-        </div> 
+        </div>
       </div>
-    </nav><!--  네브바 끝 -->
-    <div class="container mt-3"> 
-      <!--  본문 시작 -->
-      <form method="post" action="upload.php">
-      <h2 style="padding-bottom: 40px;">게시물 등록</h2>
-      <input
-        name = "pName"
-        type="text"
-        class="form-control mt-2"
-        id="title"
-        placeholder="제목"
-        style="padding-bottom: 15px;"
-      />
-      <textarea
-        name = "description"
-        class="form-control mt-2"
-        id="content"
-        placeholder="내용"
-        style="padding-bottom: 100px;"
-      ></textarea>
-      <input
-      name = "price"
-        type="text"
-        class="form-control mt-2"
-        id="price"
-        placeholder="가격"
-        style="padding-bottom: 15px;"
-      />
-      <!-- <ul style="padding-top: 50px; padding-left : 10px;"> -->
-        <!-- <li class="upload_image"> -->
-          <!-- 이미지 등록 -->
-          <input class="form-control mt-2" type="file" id="image"/>
-          <!-- <img src="" id="preview"/> -->
-        <!-- </li> -->
-      <!-- </ul> -->
-      <button class="btn btn-primary mt-3" id="upload" type = "submit">올리기</button>
-    </form>
+    </nav>
+    <div class="container p-4 detail mt-3">
+      <div class="row">
+        <div class="col-3 p-0">
+          <ul class="list-group chat-list">
+          </ul>
+        </div>
+        <div class="col-9 p-0">
+          <div class="chat-room">
+            <ul class="list-group chat-content">
+            </ul>
+            <div class="input-group">
+              <input class="form-control" id="chat-input" />
+              <button class="btn btn-primary" id="send">전송</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script
@@ -208,31 +189,10 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-
-    <!-- <script> 파이어 베이스 주석
-      const firebaseConfig = {
-        apiKey: "AIzaSyC4C5jIAH_dzNQzc-gSXLrfcyR7k0IUG2g",
-        authDomain: "cbmp-17038.firebaseapp.com",
-        databaseURL:
-          "https://cbmp-17038-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "cbmp-17038",
-        storageBucket: "cbmp-17038.appspot.com",
-        messagingSenderId: "742707500532",
-        appId: "1:742707500532:web:d7796138ddd0463832d5a1",
-      };
-
-      firebase.initializeApp(firebaseConfig);
-    </script> -->
-
-    <!-- <script src="./js/upload.js"></script>-->
+    <script src="./js/chat.js"></script>
     <script src="./js/login.js"></script>
     <script src="./js/open_loginForm.js"></script>
     <script src="./js/open_registerForm.js"></script>
     <script src="./js/navbar.js"></script>
-    <script src="./js/preview_image.js"></script>
   </body>
 </html>

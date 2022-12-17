@@ -1,15 +1,7 @@
 <?php
-$servername = "localhost:3306";
-$username = "root";
-$password = "root";
-$dbname = "CBMP";
+  require_once 'dbconfig.php';
 
-$URL = './product.php';
-
-// Create connection
-$conn = new mysqli($servername, $username, $password,$dbname);
-
-
+$URL = '../product.php';
 
 // Check connection
 if($conn->connect_error){
