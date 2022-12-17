@@ -49,9 +49,61 @@ if($firstPageNumber > $totalPage) {
 
 
 ?>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"> <!-- 네브바-->
+      <div class="container"> <!--  페이지 전체 div -->
+        <a class="navbar-brand" href="/database-project/main.php"  
+          ><img src="/database-project/assets/img/logo.png" alt="..."
+        /></a><!--  로고를 통해 메인페이지 이동  -->
+        
+        <!--  부트스트랩 메뉴 버튼-->
+        <button 
+          class="navbar-toggler" 
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        > 
+          Menu
+          <i class="fas fa-bars ms-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive"> <!--  네브바에 있는 버튼들  -->
+          <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/database-project/product.php">물건 보기</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/database-project/facility.php">시설 보기</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/database-project/notice.php">공지사항</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/database-project/func/qna/qna_main.php">Q&A</a>
+            </li>
+            <li class="nav-item">
+            <?php
+                if(isset($_SESSION['UID'])){
+            ?>
+                <a href="/database-project/func/qna/member/logout.php"><button type="button" class="btn btn-primary">로그아웃</button><a>
+            <?php
+                }else{
+            ?>
+                <a href="/database-project/func/qna/member/login.php"><button type="button" class="btn btn-primary">로그인</button><a>
+                <a href="/database-project/func/qna/member/signup.php"><button type="button" class="btn btn-primary">회원가입</button><a>
+            <?php
+                }
+            ?>
+            </li>
+          </ul>
+        </div> 
+      </div>
+    </nav><!--  네브바 끝 -->
         <!-- 더보기 버튼을 클릭하면 다음 페이지를 넘겨주기 위해 현재 페이지에 1을 더한 값을 준비한다. 더보기를 클릭할때마다 1씩 더해준다. -->
         <input type="hidden" name="nextPageNumber" id="nextPageNumber" value="<?php echo $pageNumber+1;?>">
-        <table class="table">
+        <table class="table" style="margin-top: 100px;">
         <thead>
             <tr>
             <th scope="col">번호</th>
@@ -97,48 +149,22 @@ if($firstPageNumber > $totalPage) {
             <button class="btn btn-secondary" type="button" id="more_button">더보기</button>
         </div>
         <form method="get" action="<?php echo $_SERVER["PHP_SELF"]?>">
-        <div class="input-group mb-12" style="margin:auto;width:50%;">
-                <input type="text" class="form-control" name="search_keyword" id="search_keyword" placeholder="제목과 내용에서 검색합니다." value="<?php echo $search_keyword;?>" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="submit" id="search">검색</button>
-        </div>
+          <div class="input-group mb-12" style="margin:auto;width:50%;">
+                  <input type="text" class="form-control" name="search_keyword" id="search_keyword" placeholder="제목과 내용에서 검색합니다." value="<?php echo $search_keyword;?>" aria-label="Recipient's username" aria-describedby="button-addon2">
+                  <button class="btn btn-outline-secondary" type="submit" id="search">검색</button>
+          </div>
         </form>
-        <!-- <p>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" href="<?php echo $_SERVER['PHP_SELF']?>?pageNumber=<?php echo $firstPageNumber-$pageCount;?>&firstPageNumber=<?php echo $firstPageNumber-$pageCount;?>&search_keyword=<?php echo $search_keyword;?>">Previous</a>
-                    </li>
-                    <?php
-                        for($i=$firstPageNumber;$i<=$lastPageNumber;$i++){
-                    ?>
-                        <li class="page-item <?php if($pageNumber==$i){echo "active";}?>"><a class="page-link" href="<?php echo $_SERVER['PHP_SELF']?>?pageNumber=<?php echo $i;?>&firstPageNumber=<?php echo $firstPageNumber;?>&search_keyword=<?php echo $search_keyword;?>"><?php echo $i;?></a></li>
-                    <?php
-                        }
-                    ?>
-                    <li class="page-item">
-                        <a class="page-link" href="<?php echo $_SERVER['PHP_SELF']?>?pageNumber=<?php echo $firstPageNumber+$pageCount;?>&firstPageNumber=<?php echo $firstPageNumber+$pageCount;?>&search_keyword=<?php echo $search_keyword;?>">Next</a>
-                    </li>
-                </ul>
-            </nav>
-        </p> -->
-
-        <p style="text-align:right;">
-
-            <?php
-                if($_SESSION['UID']){
-            ?>
-                <a href="/database-project/func/qna/write.php"><button type="button" class="btn btn-primary">등록</button><a>
-                <a href="/database-project/func/qna/member/logout.php"><button type="button" class="btn btn-primary">로그아웃</button><a>
-            <?php
-                }else{
-            ?>
-                <a href="/database-project/func/qna/member/login.php"><button type="button" class="btn btn-primary">로그인</button><a>
-                <a href="/database-project/func/qna/member/signup.php"><button type="button" class="btn btn-primary">회원가입</button><a>
-            <?php
-                }
-            ?>
-        </p>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
 <script>
     $("#more_button").click(function () {
        

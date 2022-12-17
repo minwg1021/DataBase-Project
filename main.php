@@ -73,19 +73,18 @@
               <a class="nav-link" href="#introduce">소개</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/database-project/func/qna/qna_main.php">Q&A</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="#item">물건 보기</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#about">커뮤니티</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="/database-project/func/qna/qna_main.php">Q&A</a>
+            </li>
+            <li class="nav-item">
             <?php
                 if(isset($_SESSION['UID'])){
             ?>
-                <a href="/database-project/func/qna/write.php"><button type="button" class="btn btn-primary">등록</button><a>
                 <a href="/database-project/func/qna/member/logout.php"><button type="button" class="btn btn-primary">로그아웃</button><a>
             <?php
                 }else{
@@ -95,105 +94,11 @@
             <?php
                 }
             ?>
-              <!-- 로그인 양식
-              <div class="form-popup" id="myForm_login" >
-                <form action="./func/login.php" class="form-container"  method="post">
-                  <h1>로그인</h1>
-                  <label for="email"><b>아이디</b></label>
-                  <input
-                    type="email"
-                    placeholder="Enter ID"
-                    name="id"
-                    id="id"
-                    required
-                  />
-                  <label for="psw"><b>비밀번호</b></label>
-                  <input
-                    type="password"
-                    placeholder="Enter Password"
-                    name="pw"
-                    id="pw"
-                    required
-                  />
-                 
-                  <input type="submit" class="btn" id="login" value="로그인"></button>
-                  <button
-                    type="button"
-                    class="btn cancel"
-                    onclick="closeLoginForm()"
-                  >
-                    Close
-                  </button>
-                </form>
-              </div>
-              <input
-                class="btn btn-primary"
-                type="button"
-                id="btn-logout"
-                value="로그아웃"
-              />-->
-
-            
-              <!-- 회원가입 양식
-              <div class="form-popup" id="myForm_register">
-                <form action="./func/register.php" class="form-container"  method="post">
-                  <h1>회원가입</h1>
-                  <label for="name-new"><b>이름</b></label>
-                  <input
-                    type="text"
-                    placeholder="Enter Name"
-                    name="name"
-                    id="name-new"
-                    required
-                  />
-                  <label for="email-new"><b>아이디</b></label>
-                  <input
-                    type="email"
-                    placeholder="Enter ID"
-                    name="email"
-                    id="email-new"
-                    required
-                  />
-                  <label for="pw-new"><b>비밀번호</b></label>
-                  <input
-                    type="password"
-                    placeholder="Enter Password"
-                    name="psw"
-                    id="pw-new"
-                    required
-                  />
-                  <label for="email"><b>주소</b></label>
-                  <input
-                  type="text"
-                    placeholder="Enter Address"
-                    name="address"
-                    id="address-new"
-                    required
-                  />
-                  <label for="psw"><b>전화번호</b></label>
-                  <input
-                  type="text"
-                    placeholder="Enter Phone Number"
-                    name="pn"
-                    id="pn-new"
-                    required
-                  />
-                  <input type="submit" class="btn" id="register" value="회원가입"></button>
-                  <button
-                    type="button"
-                    class="btn cancel"
-                    onclick="closeRegisterForm()"
-                  >
-                    Close
-                  </button>
-                </form>
-              </div>-->
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    
     <header class="masthead">
       <div class="container">
         <div class="masthead-subheading text-uppercase">CBNU</div>
@@ -253,7 +158,7 @@
         <div class="text-center">
           
           <h2 class="section-heading text-uppercase">우리동네 방방곡곡</h2>
-           <a type="button" class="btn btn-primary" href="./community.php" style="margin-bottom: 20px">둘러보기</a>
+           <a type="button" class="btn btn-primary" href="./facility.php" style="margin-bottom: 20px">둘러보기</a>
           <h3 class="section-subheading text-muted"></h3>
         </div>
         <ul class="timeline">

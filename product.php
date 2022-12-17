@@ -57,95 +57,21 @@
               <a class="nav-link" href="./notice.php">공지사항</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./qna.php">Q&A</a>
+              <a class="nav-link" href="/database-project/func/qna/qna_main.php">Q&A</a>
             </li>
             <li class="nav-item">
-              <input
-                class="btn btn-primary"
-                type="button"
-                id="btn-login"
-                value="로그인"
-                onclick="openLoginForm()"
-              />
-              <div class="form-popup" id="myForm_login">
-                <form action="./func/login.php" class="form-container">
-                  <h1>로그인</h1>
-                  <label for="email"><b>아이디</b></label>
-                  <input
-                    type="email"
-                    placeholder="Enter ID"
-                    name="email"
-                    id="email"
-                    required
-                  />
-                  <label for="psw"><b>비밀번호</b></label>
-                  <input
-                    type="password"
-                    placeholder="Enter Password"
-                    name="psw"
-                    id="pw"
-                    required
-                  />
-                  <input type="button" class="btn" id="login" value="로그인"></button>
-                  <button
-                    type="button"
-                    class="btn cancel"
-                    onclick="closeLoginForm()"
-                  >
-                    Close
-                  </button>
-                </form>
-              </div>
-              <input
-                class="btn btn-primary"
-                type="button"
-                id="btn-logout"
-                value="로그아웃"
-              />
-              <input
-                class="btn btn-primary"
-                type="button"
-                id="btn-register"
-                value="회원가입"
-                onclick="openRegisterForm()"
-              />
-              <div class="form-popup" id="myForm_register">
-                <form action="./func/register.php" class="form-container">
-                  <h1>회원가입</h1>
-                  <label for="name-new"><b>이름</b></label>
-                  <input
-                    type="text"
-                    placeholder="Enter Name"
-                    name="name"
-                    id="name-new"
-                    required
-                  />
-                  <label for="email-new"><b>아이디</b></label>
-                  <input
-                    type="email"
-                    placeholder="Enter ID"
-                    name="email"
-                    id="email-new"
-                    required
-                  />
-                  <label for="pw-new"><b>비밀번호</b></label>
-                  <input
-                    type="password"
-                    placeholder="Enter Password"
-                    name="psw"
-                    id="pw-new"
-                    required
-                  />
-                  <input type="button" class="btn" id="register" value="회원가입"></button>
-                  <button
-                    type="button"
-                    class="btn cancel"
-                    onclick="closeRegisterForm()"
-                  >
-                    Close
-                  </button>
-                </form>
-              </div>
+            <?php
+                if(isset($_SESSION['UID'])){
+            ?>
+                <a href="/database-project/func/qna/member/logout.php"><button type="button" class="btn btn-primary">로그아웃</button><a>
+            <?php
+                }else{
+            ?>
+                <a href="/database-project/func/qna/member/login.php"><button type="button" class="btn btn-primary">로그인</button><a>
+                <a href="/database-project/func/qna/member/signup.php"><button type="button" class="btn btn-primary">회원가입</button><a>
+            <?php
+                }
+            ?>
             </li>
           </ul>
         </div>
