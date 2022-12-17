@@ -37,8 +37,6 @@ while($recs = $rec_result->fetch_object()){
         <hr>
       </article>
 
-     
-
       <nav class="blog-pagination" aria-label="Pagination">
         <a class="btn btn-outline-secondary" href="/database-project/func/qna/qna_main.php">목록</a>
         <a class="btn btn-outline-secondary" href="/database-project/func/qna/write.php?parent_id=<?php echo $rs->bid;?>">답글</a>

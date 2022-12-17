@@ -78,7 +78,7 @@ if($firstPageNumber > $totalPage) {
               <a class="nav-link" href="/database-project/facility.php">시설 보기</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/database-project/notice.php">공지사항</a>
+              <a class="nav-link" href="./notice.php">공지사항</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/database-project/func/qna/qna_main.php">Q&A</a>
@@ -87,6 +87,7 @@ if($firstPageNumber > $totalPage) {
             <?php
                 if(isset($_SESSION['UID'])){
             ?>
+                <a href="/database-project/func/qna/write.php"><button type="button" class="btn btn-primary">등록</button><a>
                 <a href="/database-project/func/qna/member/logout.php"><button type="button" class="btn btn-primary">로그아웃</button><a>
             <?php
                 }else{
@@ -149,10 +150,10 @@ if($firstPageNumber > $totalPage) {
             <button class="btn btn-secondary" type="button" id="more_button">더보기</button>
         </div>
         <form method="get" action="<?php echo $_SERVER["PHP_SELF"]?>">
-          <div class="input-group mb-12" style="margin:auto;width:50%;">
-                  <input type="text" class="form-control" name="search_keyword" id="search_keyword" placeholder="제목과 내용에서 검색합니다." value="<?php echo $search_keyword;?>" aria-label="Recipient's username" aria-describedby="button-addon2">
-                  <button class="btn btn-outline-secondary" type="submit" id="search">검색</button>
-          </div>
+        <div class="input-group mb-12" style="margin:auto;width:50%;">
+                <input type="text" class="form-control" name="search_keyword" id="search_keyword" placeholder="제목과 내용에서 검색합니다." value="<?php echo $search_keyword;?>" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="submit" id="search">검색</button>
+        </div>
         </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script
