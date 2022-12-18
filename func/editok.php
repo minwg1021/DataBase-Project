@@ -22,7 +22,7 @@ $sql = "update Post set pName='$pName', description='$description',
 if (mysqli_query($mysqli, $sql)) {
 ?> <script>
         alert("<?php echo "게시글이 수정되었습니다." ?>");
-        location.replace("<?php echo $URL ?>");
+        location.replace("detail.php?idx=<?=$row['PID']?>");
     </script>
 <?php
 } else {

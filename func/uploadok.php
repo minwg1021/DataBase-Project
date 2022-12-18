@@ -20,8 +20,6 @@ $date = date("Y/m/d");
 //$query = "INSERT INTO Post (pName, Image, description, price, regdate, UID) values(null,'$title', '$content', '$date', 0, '$id', '$pw')";
 $sql = "insert into Post(pName,Image, description,price,regdate,uploader) values('".$pName."','".$file."','".$description."','".$price."','".$date."','".$_SESSION['MID']."')";
 
-
-
 if (mysqli_query($mysqli, $sql)) {
 ?> <script>
         alert("<?php echo "게시글이 등록되었습니다." ?>");

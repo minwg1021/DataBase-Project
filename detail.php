@@ -123,7 +123,7 @@ echo '<img src="data:image;base64,'.base64_encode($row['Image']).'" alt="Image" 
 <!-- 댓글 내용 보이기-->
 <?php
               $sql = "select * from reply Where PID = $index";
-              $result3 = mysqli_query($conn, $sql);
+              $result3 = mysqli_query($mysqli, $sql);
 while ($row = mysqli_fetch_array($result3)) {
 ?>
 
