@@ -109,6 +109,40 @@ echo '<img src="data:image;base64,'.base64_encode($row['Image']).'" alt="Image" 
       </div>
     </div>
 
+<!--댓글 등록-->
+    <div style="margin-top:20px;">
+        <form class="row g-3" method="post" action="/database-project/func/reply.php?idx=<?=$row['PID']?>">
+          <div class="col-md-10">
+            <textarea name = "contents" class="form-control" placeholder="댓글을 입력해주세요." id="reply" style="height: 60px"></textarea>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-secondary" id="memo_button">댓글등록</button>
+          </div>
+        </form>
+      </div>
+<!-- 댓글 내용 보이기-->
+<?php
+              $sql = "select * from reply Where PID = $index";
+              $result3 = mysqli_query($conn, $sql);
+while ($row = mysqli_fetch_array($result3)) {
+?>
+
+      <div class="card mb-4"  style="max-width: 100%;margin-top:20px;">
+          <div class="row g-0">
+            <div class="col-md-12">
+              <div class="card-body">
+                <p class="card-text"><?php echo $row['comments'];?></p>
+                <p class="card-text"><small class="text-muted"><?php echo $row['userid'];?>/<?php echo $row['regdate'];?></small></p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <?php
+                }
+                ?>
+      </div>
+
     <script src="./js/detail.js"></script>
     <script src="./js/login.js"></script>
     <script src="./js/open_loginForm.js"></script>
