@@ -1,7 +1,8 @@
 <?php
-  require_once 'dbconfig.php';
+session_start();
+include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/dbcon.php";
 
-$URL = '../product.php';
+$URL = '/database-project/product.php';
 
 // Check connection
 
@@ -18,7 +19,7 @@ $date = date("Y/m/d");
 $sql = "update Post set pName='$pName', description='$description',
   regdate='$date', price = '$price' where PID='$index'";
 
-if (mysqli_query($conn, $sql)) {
+if (mysqli_query($mysqli, $sql)) {
 ?> <script>
         alert("<?php echo "게시글이 수정되었습니다." ?>");
         location.replace("<?php echo $URL ?>");

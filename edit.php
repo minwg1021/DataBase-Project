@@ -1,8 +1,8 @@
 <?php session_start();
-  require_once './func/dbconfig.php';
+include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/dbcon.php";
   $index = $_GET['idx'];
   $sql = "select * from Post Where PID = $index";
-  $result = mysqli_query($conn, $sql);
+  $result = mysqli_query($mysqli, $sql);
   $row = mysqli_fetch_array($result);
 ?>
 

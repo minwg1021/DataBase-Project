@@ -1,5 +1,5 @@
-<?php
-  require_once './func/dbconfig.php';
+<?php session_start();
+include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/dbcon.php";
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +81,7 @@
 <!-- 제품 나오는 목록  -->
                 <?php
                 $sql = "select * from Post order by pid desc ";
-                $result = mysqli_query($conn, $sql);
+                $result = mysqli_query($mysqli, $sql);
     while($row = mysqli_fetch_array($result)){?>
   <div class="product">
 <div class="thumbnail" style="background- image: "> <?php 

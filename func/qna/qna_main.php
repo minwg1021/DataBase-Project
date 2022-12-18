@@ -42,12 +42,6 @@ if($firstPageNumber < 1) $firstPageNumber = 1;
 $lastPageNumber = $firstPageNumber + $pageCount - 1;//페이징 나오는 부분에서 레인지를 정한다.
 if($lastPageNumber > $totalPage) $lastPageNumber = $totalPage;
 
-if($firstPageNumber > $totalPage) {
-    echo "<script>alert('더 이상 페이지가 없습니다.');history.back();</script>";
-    exit;
-}
-
-
 ?>
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"> <!-- 네브바-->

@@ -1,5 +1,5 @@
-<?php
-  require_once './func/dbconfig.php';
+<?php session_start();
+include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/dbcon.php";
 ?>
 
 <!DOCTYPE html>

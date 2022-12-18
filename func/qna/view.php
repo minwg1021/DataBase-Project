@@ -1,4 +1,5 @@
 <?php
+session_start();
 include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/header.php";
 
 $bid=$_GET["bid"];
