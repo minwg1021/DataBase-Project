@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/dbcon.php";
 
 // echo "<pre>";
@@ -6,7 +6,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/dbcon.php";
 
 $subject=$_POST["subject"];
 $content=$_POST["content"];
-$userid="hong";//userid는 없어서 임의로 넣어줬다.
+$userid= $_SESSION['UID'];//userid는 없어서 임의로 넣어줬다.
 $status=1;//status는 1이면 true, 0이면 false이다.
 
 // echo "<br>------<br>";
