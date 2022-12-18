@@ -95,9 +95,9 @@ $row2 = mysqli_fetch_array($result2);
     <div class="container mt-3" id="item-info">
       <button class="btn btn-outline-secondary" id="edit" ><a  href="/database-project/edit.php?idx=<?=$row['PID']?>">수정</a></button>
       <div
-        class="detail-pic my-4"
+        class="detail-pic my-5"
       ><?php 
-echo '<img src="data:image;base64,'.base64_encode($row['Image']).'" alt="Image" style="width: 400px; height: 400px; border-radius: 50px;">';?></div>
+echo '<img src="data:image;base64,'.base64_encode($row['Image']).'" alt="Image" style="width: 600px; height: 500px; border-radius: 50px;">';?></div>
       <div>
         <h4 class="author"><?php echo $row2['userid'];?> <?php ?></h5> <!-- 순서대로 넣으면 됨 -->
         <p class="date" style="font-size : 12px"><?php echo $row['regdate'];?></p>

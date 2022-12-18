@@ -82,16 +82,26 @@ include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/dbcon.php";
                 <?php
                 $sql = "select * from Post order by pid desc ";
                 $result = mysqli_query($mysqli, $sql);
-    while($row = mysqli_fetch_array($result)){?>
+                
+
+                $q = "select members.userid from members,post where members.mid= post.uploader;";
+                $result2 = mysqli_query($mysqli, $q);
+
+
+    while($row = mysqli_fetch_array($result)){
+      $row2 = mysqli_fetch_array($result2)?>
+  
   <div class="product">
-<div class="thumbnail" style="background- image: "> <?php 
-echo '<img src="data:image;base64,'.base64_encode($row['Image']).'" alt="Image" style="width: 200px; height: 200px;">';?>
-  </div>
-<div class="flex-grow-1 p-4">           
-            <h5 class="title"> <a href="detail.php?idx=<?=$row['PID']?>"> <?php echo $row['pName'];?></a></h5> 
-            
- <p class="date"><?php echo $row['regdate'];?></p>
+    <a href="detail.php?idx=<?=$row['PID']?>">
+    <div class="thumbnail" style="background- image: "> <?php 
+    echo '<img src="data:image;base64,'.base64_encode($row['Image']).'" alt="Image" style="width: 200px; height: 200px; border-radius: 15%;">';?>
+    </div>
+    <div class="flex-grow-1 p-4">           
+            <h3 class="title">  <?php echo $row['pName'];?></h5> 
+            <h5 class="title">  <?php echo $row2['userid'];?></h5> 
+            <p class="date"><?php echo $row['regdate'];?></p>
             <p class="price"> <?php echo $row['price'];?> 원</p>
+            </a>
       </div>
       </div>
 
