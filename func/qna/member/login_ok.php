@@ -6,13 +6,16 @@ $passwd=$_POST["passwd"];
 $passwd=hash('sha512',$passwd);
 
 $query = "select * from members where userid='".$userid."' and passwd='".$passwd."'";
+
+
+
 $result = $mysqli->query($query) or die("query error => ".$mysqli->error);
 $rs = $result->fetch_object();
 
 if($rs){
     $_SESSION['UID']= $rs->userid;
     $_SESSION['UNAME']= $rs->username;
-
+    $_SESSION['MID'] = $rs->mid;
     echo "<script>alert('어서오십시오.');location.href='/database-project/main.php';</script>";
     exit;
 

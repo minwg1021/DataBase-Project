@@ -16,8 +16,10 @@ $description = $_POST['description'];
 $price = $_POST['price'];                    
 $date = date("Y/m/d");      
 
+
+
 //$query = "INSERT INTO Post (pName, Image, description, price, regdate, UID) values(null,'$title', '$content', '$date', 0, '$id', '$pw')";
-$sql = "insert into Post(pName,Image, description,price,regdate) values('".$pName."','".$file."','".$description."','".$price."','".$date."')";
+$sql = "insert into Post(pName,Image, description,price,regdate,uploader) values('".$pName."','".$file."','".$description."','".$price."','".$date."','".$_SESSION['MID']."')";
 
 
 
