@@ -1,4 +1,4 @@
-<?php session_start(); //찬성 반대 php
+<?php
 include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/dbcon.php";
 ini_set( 'display_errors', '0' );
 

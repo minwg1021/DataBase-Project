@@ -1,4 +1,4 @@
-<?php session_start();
+<?php
 include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/dbcon.php";
 ini_set( 'display_errors', '0' );
 

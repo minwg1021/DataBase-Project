@@ -1,5 +1,4 @@
 <?php
-session_start();
 include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/dbcon.php";
 
 $URL = '/database-project/product.php';

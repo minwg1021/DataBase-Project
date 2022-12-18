@@ -1,5 +1,5 @@
-<?php session_start();
-include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/header.php";
+<?php
+  include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/header.php";
 ?>
 
         <form class="row g-3 needs-validation" method="post" action="signup_ok.php">

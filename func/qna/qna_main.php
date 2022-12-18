@@ -1,4 +1,4 @@
-<?php session_start();
+<?php
 include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/header.php";
 
 $search_keyword = $_GET['search_keyword'];
@@ -43,11 +43,57 @@ if($firstPageNumber > $totalPage) {
     echo "<script>alert('더 이상 페이지가 없습니다.');history.back();</script>";
     exit;
 }
-
-
 ?>
-
-        <table class="table">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="./main.php"
+          ><img src="/database-project/assets/img/logo.png" alt="..."
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          Menu
+          <i class="fas fa-bars ms-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/database-project/product.php">물건 보기</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/database-project/facility.php">시설 보기</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/database-project/notice.php">공지사항</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/database-project/func/qna/qna_main.php">Q&A</a>
+            </li>
+            <li class="nav-item">
+            <?php
+                if(isset($_SESSION['UID'])){
+            ?>
+                <a href="/database-project/func/qna/member/logout.php"><button type="button" class="btn btn-primary">로그아웃</button><a>
+            <?php
+                }else{
+            ?>
+                <a href="/database-project/func/qna/member/login.php"><button type="button" class="btn btn-primary">로그인</button><a>
+                <a href="/database-project/func/qna/member/signup.php"><button type="button" class="btn btn-primary">회원가입</button><a>
+            <?php
+                }
+            ?>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+        <table class="table" style="margin-top: 100px;">
         <thead>
             <tr>
             <th scope="col">번호</th>
@@ -112,12 +158,6 @@ if($firstPageNumber > $totalPage) {
                 if($_SESSION['UID']){
             ?>
                 <a href="/database-project/func/qna/write.php"><button type="button" class="btn btn-primary">등록</button><a>
-                <a href="/database-project/func/qna/member/logout.php"><button type="button" class="btn btn-primary">로그아웃</button><a>
-            <?php
-                }else{
-            ?>
-                <a href="/database-project/func/qna/member/login.php"><button type="button" class="btn btn-primary">로그인</button><a>
-                <a href="/database-project/func/qna/member/signup.php"><button type="button" class="btn btn-primary">회원가입</button><a>
             <?php
                 }
             ?>

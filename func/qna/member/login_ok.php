@@ -7,8 +7,6 @@ $passwd=hash('sha512',$passwd);
 
 $query = "select * from members where userid='".$userid."' and passwd='".$passwd."'";
 
-
-
 $result = $mysqli->query($query) or die("query error => ".$mysqli->error);
 $rs = $result->fetch_object();
 
