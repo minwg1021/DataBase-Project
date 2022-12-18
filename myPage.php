@@ -102,9 +102,9 @@ foreach ($printFArray as $fa) {
   </div>
 
   <main class="main-box" style="margin-top: 200px;">
-    <div class="intro" style="align-items: center;">
-      <div class="product" style="width:500px; display: flex;  justify-content: center; ">
-        <img src=""
+    <div class="intro" style="display: flex; justify-content: center; ">
+      <div class="product" style="width:500px; display: flex; margin-bottom: 100px; justify-content: center; ">
+        <img src="/database-project/assets/img/userLogo.png" style="margin-right: 20px;">
         <p>아이디: <?php echo $result->userid ?><br>이름: <?php echo $result->username ?><br>가입일: <?php echo $result->regdate?></p>
       </div>
     </div>
