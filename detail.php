@@ -1,5 +1,5 @@
 <?php session_start();
-  require_once './func/dbconfig.php';
+include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/dbcon.php";
   $index = $_GET['idx']; 
 
 
@@ -7,8 +7,8 @@
   // 2 = 게시글에 mid가 들어있기 때문에 작성자에 userid를 넣기 위한 코드
 $sql = "select * from Post Where PID = $index";
 $sql2 = "select * from members Where mid = (select uploader from Post Where PID = $index)";  
-$result = mysqli_query($conn, $sql);
-$result2 = mysqli_query($conn, $sql2);
+$result = mysqli_query($mysqli, $sql);
+$result2 = mysqli_query($mysqli, $sql2);
 $row = mysqli_fetch_array($result);
 $row2 = mysqli_fetch_array($result2);
 ?>
