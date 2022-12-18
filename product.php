@@ -77,7 +77,30 @@
         </div>
       </div>
     </nav>
-    <div class="container mt-3" id="item_list"></div>
+    <div class="container mt-3" id="item_list">
+<!-- 제품 나오는 목록  -->
+                <?php
+                $sql = "select * from Post order by pid desc ";
+                $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_array($result)){?>
+
+
+  <div class="product">
+<div class="thumbnail" style="background- image: "> <?php 
+echo '<img src="data:image;base64,'.base64_encode($row['Image']).'" alt="Image" style="width: 200px; height: 200px;">';?>
+  </div>
+<div class="flex-grow-1 p-4">
+            <h5 class="title"> <a href="/detail.html"> <?php echo $row['pName'];?></a></h5> 
+ <p class="date"><?php echo $row['regdate'];?></p>
+            <p class="price"> <?php echo $row['price'];?></p>
+      </div>
+      </div>
+
+
+<?php
+                }
+                ?>
+    </div> 
     <div style="text-align: center; margin-bottom: 20px">
       <a type="button" class="btn btn-primary" href="/DataBase-Project/upload.php">등록하기</a>
     </div>
@@ -91,6 +114,6 @@
     <script src="./js/open_loginForm.js"></script>
     <script src="./js/open_registerForm.js"></script>   
     <script src="./js/navbar.js"></script>
-    <!-- <script src="./js/product.js"></script> -->
+     <script src="./js/product.js"></script>
   </body>
 </html>
