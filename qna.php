@@ -79,6 +79,8 @@ include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/dbcon.php";
             <?php
                 if(isset($_SESSION['UID'])){
             ?>
+              <span><?php echo $_SESSION['UID']?>님</span>
+              <a href="/database-project/myPage.php"><img src="/DataBase-Project/assets/img/myPage.png"></a>
                 <a href="/database-project/func/qna/member/logout.php"><button type="button" class="btn btn-primary">로그아웃</button><a>
             <?php
                 }else{

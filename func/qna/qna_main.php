@@ -43,7 +43,7 @@ if($lastPageNumber > $totalPage) $lastPageNumber = $totalPage;
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="./main.php"
+        <a class="navbar-brand" href="/database-project/main.php"
           ><img src="/database-project/assets/img/logo.png" alt="..."
         /></a>
         <button
@@ -76,7 +76,9 @@ if($lastPageNumber > $totalPage) $lastPageNumber = $totalPage;
             <?php
                 if(isset($_SESSION['UID'])){
             ?>
-                <a href="/database-project/func/qna/member/logout.php"><button type="button" class="btn btn-primary">로그아웃</button><a>
+              <span><?php echo $_SESSION['UID']?>님</span>
+              <a href="/database-project/myPage.php"><img src="/DataBase-Project/assets/img/myPage.png"></a>
+              <a href="/database-project/func/qna/member/logout.php"><button type="button" class="btn btn-primary">로그아웃</button><a>
             <?php
                 }else{
             ?>

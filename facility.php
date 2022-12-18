@@ -62,6 +62,8 @@ while ($frs = $result->fetch_object()) {
             <?php
             if (isset($_SESSION['UID'])) {
             ?>
+              <span><?php echo $_SESSION['UID']?>님</span>
+              <a href="/database-project/myPage.php"><img src="/DataBase-Project/assets/img/myPage.png"></a>
             <a href="/database-project/func/qna/member/logout.php"><button type="button"
                 class="btn btn-primary">로그아웃</button><a>
                 <?php
@@ -113,6 +115,7 @@ while ($frs = $result->fetch_object()) {
       <?php
         foreach ($facilityArray as $fa) {
       ?>
+      <a href="/database-project/func/qna/facilitySave.php?idx=<?=$fa->fID?>">Save</a>
       <div class="restaurant-list" address="<?php echo $fa->address ?>" data-type="<?php echo $fa->type ?>">
         <div class="restaurant-list__tags">
         </div>

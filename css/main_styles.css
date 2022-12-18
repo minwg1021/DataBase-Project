@@ -265,7 +265,11 @@ a {
 }
 
 a:hover {
+<<<<<<< HEAD
   color: gray;
+=======
+  color: grey;
+>>>>>>> 2f51a36 (즐겨찾기)
 }
 
 a:not([href]):not([class]),
