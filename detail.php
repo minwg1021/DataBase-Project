@@ -3,9 +3,11 @@
   $index = $_GET['idx']; 
 
   $sql = "select * from Post Where PID = $index";
-
-  $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_array($result);
+$sql2 = "select * from members Where mid = (select uploader from Post Where PID = $index)";  
+$result = mysqli_query($conn, $sql);
+$result2 = mysqli_query($conn, $sql2);
+$row = mysqli_fetch_array($result);
+$row2 = mysqli_fetch_array($result2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,7 +98,7 @@
       ><?php 
 echo '<img src="data:image;base64,'.base64_encode($row['Image']).'" alt="Image" style="width: 400px; height: 400px;">';?></div>
       <div>
-        <h4 class="author">올린사람 : <?php ?></h5> <!-- 순서대로 넣으면 됨 -->
+        <h4 class="author"><?php echo $row2['userid'];?> <?php ?></h5> <!-- 순서대로 넣으면 됨 -->
         <p class="date" style="font-size : 12px"><?php echo $row['regdate'];?></p>
         <hr />
         <h4 class="title"><?php echo $row['pName'];?></h5>
