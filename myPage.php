@@ -43,6 +43,7 @@ foreach ($printFArray as $fa) {
     src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=4sw4pxi6um&submodules=geocoder"></script>
   <link rel="stylesheet" href="css/map_css/styles.css">
   <link rel="stylesheet" href="./css/main_styles.css" />
+  <link rel="stylesheet" href="./css/product.css" />
   <link
     href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Jua&family=Square+Peg&family=Water+Brush&family=Yanone+Kaffeesatz:wght@700&display=swap"
     rel="stylesheet" />
@@ -103,10 +104,11 @@ foreach ($printFArray as $fa) {
   </div>
 
   <main class="main-box" style="margin-top: 200px;">
-    <div class="intro">
-      <p>아이디: <?php echo $result->userid ?></p>
-      <p>이름: <?php echo $result->username ?></p>
-      <p>가입일: <?php echo $result->regdate ?></p>
+    <div class="intro" style="display: flex; justify-content: center; ">
+      <div class="product" style="width:500px; display: flex; margin-bottom: 100px; justify-content: center; ">
+        <img src="/database-project/assets/img/userLogo.png" style="margin-right: 20px;">
+        <p>아이디: <?php echo $result->userid ?><br>이름: <?php echo $result->username ?><br>가입일: <?php echo $result->regdate?></p>
+      </div>
     </div>
 
     <div class="tag-filters">
