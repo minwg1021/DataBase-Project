@@ -78,7 +78,7 @@ if($firstPageNumber > $totalPage) {
               <a class="nav-link" href="/database-project/facility.php">시설 보기</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./notice.php">공지사항</a>
+              <a class="nav-link" href="/database-project/notice.php">공지사항</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/database-project/func/qna/qna_main.php">Q&A</a>

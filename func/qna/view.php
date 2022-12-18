@@ -11,15 +11,15 @@ while($mrs = $memo_result->fetch_object()){
     $memoArray[]=$mrs;
 }
 
-$query2="select type,count(*) as cnt from recommend r where bid=".$rs->bid." group by type";
-$rec_result = $mysqli->query($query2) or die("query error => ".$mysqli->error);
-while($recs = $rec_result->fetch_object()){
-  $recommend[$recs->type] = $recs->cnt;
-}
+// $query2="select type,count(*) as cnt from recommend r where bid=".$rs->bid." group by type";
+// $rec_result = $mysqli->query($query2) or die("query error => ".$mysqli->error);
+// while($recs = $rec_result->fetch_object()){
+//   $recommend[$recs->type] = $recs->cnt;
+// }
 
 ?>
       <h3 class="pb-4 mb-4 fst-italic border-bottom" style="text-align:center;">
-        - 게시판 보기 -
+        - QnA 보기 -
       </h3>
 
       <article class="blog-post">

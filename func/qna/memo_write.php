@@ -30,6 +30,5 @@ echo "<div class=\"card mb-4\" id=\"memo_".$last_memoid."\" style=\"max-width: 1
 </div>";
 
 ?>
-   
-아이디 부분과 수정 삭제 부분을 추가했다.
+
  
