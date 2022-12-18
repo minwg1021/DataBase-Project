@@ -1,5 +1,11 @@
 <?php
   require_once './func/dbconfig.php';
+  $index = $_GET['idx']; 
+
+  $sql = "select * from Post Where PID = $index";
+
+  $result = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,15 +92,16 @@
       <button class="btn btn-outline-secondary" id="chat">채팅</button>
       <div
         class="detail-pic my-4"
-        style="background-image: url('https://placeimg.com/640/380/tech')"
-      ></div>
+        style="background-image: "
+      ><?php 
+echo '<img src="data:image;base64,'.base64_encode($row['Image']).'" alt="Image" style="width: 400px; height: 400px;">';?></div>
       <div>
-        <h4 class="author">올린사람 : 모름</h5>
-        <p class="date" style="font-size : 12px">올린날짜</p>
+        <h4 class="author">올린사람 : <?php ?></h5> <!-- 순서대로 넣으면 됨 -->
+        <p class="date" style="font-size : 12px"><?php echo $row['regdate'];?></p>
         <hr />
-        <h4 class="title">지금 url에 기록된 id를 가진 게시물의 상품명</h5>
-        <p class="content">올린날짜</p>
-        <p class="price">1000원</p>
+        <h4 class="title"><?php echo $row['pName'];?></h5>
+        <p class="content"><?php echo $row['description'];?></p>
+        <p class="price"><?php echo $row['price'];?> 원</p>
       </div>
     </div>
 
