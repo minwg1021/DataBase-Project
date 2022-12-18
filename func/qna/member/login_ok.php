@@ -14,11 +14,11 @@ if($rs){
     $_SESSION['UID']= $rs->userid;
     $_SESSION['UNAME']= $rs->username;
     $_SESSION['MID'] = $rs->mid;
-    echo "<script>alert('어서오십시오.');location.href='/database-project/main.php';</script>";
+    echo "<script>alert('로그인에 성공하였습니다.');location.href='/database-project/main.php';</script>";
     exit;
 
 }else{
-    echo "<script>alert('아이디나 암호가 틀렸습니다. 다시한번 확인해주십시오.');history.back();</script>";
+    echo "<script>alert('아이디나 암호가 틀렸습니다.');history.back();</script>";
     exit;
 }
 

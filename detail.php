@@ -93,7 +93,13 @@ $row2 = mysqli_fetch_array($result2);
       </div>
     </nav>
     <div class="container mt-3" id="item-info">
-      <button class="btn btn-outline-secondary" id="edit" ><a  href="/database-project/edit.php?idx=<?=$row['PID']?>">수정</a></button>
+    <?php 
+    if($_SESSION['UID'] == $row['uploader'] ){?>
+      <button class="btn btn-outline-secondary" id="edit" ><a  href="/database-project/edit.php?idx=<?=$row['PID']?>">수정하기</a></button>
+      <?php
+  }
+    ?>
+    
       <div
         class="detail-pic my-5"
       ><?php 
