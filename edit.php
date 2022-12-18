@@ -1,5 +1,9 @@
-<?php
+<?php session_start();
   require_once './func/dbconfig.php';
+  $index = $_GET['idx'];
+  $sql = "select * from Post Where PID = $index";
+  $result = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_array($result);
 ?>
 
 <!DOCTYPE html>
@@ -88,27 +92,31 @@
     </nav>
     <div class="container mt-3">
       <h2 style="padding-bottom: 40px;">게시물 수정</h2>
+      <form method="post" action="./func/editok.php?idx=<?=$row['PID']?>"   enctype="multipart/form-data">
       <input
+        name = "pName"
         type="text"
         class="form-control mt-2"
         id="title"
-        placeholder="제목"
+        value="<?php echo $row['pName'];?>"
         style="padding-bottom: 15px;"
       />
       <textarea
+        name = "description"
         class="form-control mt-2"
         id="content"
-        placeholder="내용"
         style="padding-bottom: 100px;"
-      ></textarea>
+      ><?php echo $row['description'];?></textarea>
       <input
+      name = "price"
         type="text"
         class="form-control mt-2"
         id="price"
-        placeholder="가격"
-        style="padding-bottom: 15px;"
-      />
-      <button class="btn btn-primary mt-3" id="send">수정하기</button>
+          value=" <?php echo $row['price'];?>"
+        style="padding-bottom: 15px;">  
+      </input>
+      <button class="btn btn-primary mt-3" id="send" >수정하기</button>
+      </form>
     </div>
 
     <script

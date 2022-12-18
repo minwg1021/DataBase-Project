@@ -1,8 +1,11 @@
-<?php
+<?php session_start();
   require_once './func/dbconfig.php';
   $index = $_GET['idx']; 
 
-  $sql = "select * from Post Where PID = $index";
+
+  /// 1 = 게시판 정보를 가져오는 sql 코드
+  // 2 = 게시글에 mid가 들어있기 때문에 작성자에 userid를 넣기 위한 코드
+$sql = "select * from Post Where PID = $index";
 $sql2 = "select * from members Where mid = (select uploader from Post Where PID = $index)";  
 $result = mysqli_query($conn, $sql);
 $result2 = mysqli_query($conn, $sql2);
@@ -90,8 +93,7 @@ $row2 = mysqli_fetch_array($result2);
       </div>
     </nav>
     <div class="container mt-3" id="item-info">
-      <button class="btn btn-outline-secondary" id="edit">수정</button>
-      <button class="btn btn-outline-secondary" id="chat">채팅</button>
+      <button class="btn btn-outline-secondary" id="edit" ><a  href="/database-project/edit.php?idx=<?=$row['PID']?>">수정</a></button>
       <div
         class="detail-pic my-4"
         style="background-image: "
