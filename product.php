@@ -80,16 +80,16 @@ include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/dbcon.php";
     <div class="container mt-3" id="item_list">
 <!-- 제품 나오는 목록  -->
                 <?php
-                $sql = "select * from Post order by pid desc ";
-                $result = mysqli_query($mysqli, $sql);
+                //$sql = "select * post from Post order by pid desc ";
+                //$result = mysqli_query($mysqli, $sql);
                 
 
-                $q = "select members.userid from members,post where members.mid= post.uploader;";
+                $q = "select members.userid, post.PID, post.pName, post.Image, post.description, post.price, post.regdate  from members,post where members.mid= post.uploader order by post.pid desc;";
                 $result2 = mysqli_query($mysqli, $q);
 
 
-    while($row = mysqli_fetch_array($result)){
-      $row2 = mysqli_fetch_array($result2)?>
+    while($row = mysqli_fetch_array($result2)){
+      //$row2 = mysqli_fetch_array($result2)?>
   
   <div class="product">
     <a href="detail.php?idx=<?=$row['PID']?>">
@@ -98,7 +98,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/dbcon.php";
     </div>
     <div class="flex-grow-1 p-4">           
             <h3 class="title">  <?php echo $row['pName'];?></h5> 
-            <h5 class="title">  <?php echo $row2['userid'];?></h5> 
+            <h5 class="title">  <?php echo $row['userid'];?></h5> 
             <p class="date"><?php echo $row['regdate'];?></p>
             <p class="price"> <?php echo $row['price'];?> 원</p>
             </a>
