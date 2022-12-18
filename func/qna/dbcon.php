@@ -1,8 +1,8 @@
 <?php
 $hostname="localhost:3306";
 $dbuserid="root";
-$dbpasswd="Woong5372!@";
-$dbname="testdb";
+$dbpasswd="root";
+$dbname="CBMP";
 
 $mysqli = new mysqli($hostname, $dbuserid, $dbpasswd, $dbname);
 if ($mysqli->connect_errno) {

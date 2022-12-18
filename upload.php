@@ -90,7 +90,7 @@
     </nav><!--  네브바 끝 -->
     <div class="container mt-3"> 
       <!--  본문 시작 -->
-      <form method="post" action="upload.php">
+      <form method="post" action="./func/uploadok.php"   enctype="multipart/form-data">
       <h2 style="padding-bottom: 40px;">게시물 등록</h2>
       <input
         name = "pName"
@@ -118,7 +118,7 @@
       <!-- <ul style="padding-top: 50px; padding-left : 10px;"> -->
         <!-- <li class="upload_image"> -->
           <!-- 이미지 등록 -->
-          <input class="form-control mt-2" type="file" id="image"/>
+          <input class="form-control mt-2" type="file" name = "img" id="image"/>
           <!-- <img src="" id="preview"/> -->
         <!-- </li> -->
       <!-- </ul> -->
