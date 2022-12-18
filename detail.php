@@ -96,9 +96,8 @@ $row2 = mysqli_fetch_array($result2);
       <button class="btn btn-outline-secondary" id="edit" ><a  href="/database-project/edit.php?idx=<?=$row['PID']?>">수정</a></button>
       <div
         class="detail-pic my-4"
-        style="background-image: "
       ><?php 
-echo '<img src="data:image;base64,'.base64_encode($row['Image']).'" alt="Image" style="width: 400px; height: 400px;">';?></div>
+echo '<img src="data:image;base64,'.base64_encode($row['Image']).'" alt="Image" style="width: 400px; height: 400px; border-radius: 50px;">';?></div>
       <div>
         <h4 class="author"><?php echo $row2['userid'];?> <?php ?></h5> <!-- 순서대로 넣으면 됨 -->
         <p class="date" style="font-size : 12px"><?php echo $row['regdate'];?></p>
@@ -107,7 +106,7 @@ echo '<img src="data:image;base64,'.base64_encode($row['Image']).'" alt="Image" 
         <p class="content"><?php echo $row['description'];?></p>
         <p class="price"><?php echo $row['price'];?> 원</p>
       </div>
-    </div>
+    
 
 <!--댓글 등록-->
     <div style="margin-top:20px;">
@@ -142,7 +141,7 @@ while ($row = mysqli_fetch_array($result3)) {
                 }
                 ?>
       </div>
-
+      </div>
     <script src="./js/detail.js"></script>
     <script src="./js/login.js"></script>
     <script src="./js/open_loginForm.js"></script>

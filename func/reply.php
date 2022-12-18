@@ -17,7 +17,8 @@ $sql = "insert into reply (comments,userid,regdate, PID) values('".$contents."',
 if (mysqli_query($mysqli, $sql)) {
 ?> <script>
       
-     history.back();
+      alert("<?php echo "댓글이 등록되었습니다." ?>");
+      location.replace("/database-project/detail.php?idx=<?=$index?>");
     </script>
 <?php
 } else {

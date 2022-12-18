@@ -89,6 +89,7 @@ echo '<img src="data:image;base64,'.base64_encode($row['Image']).'" alt="Image" 
   </div>
 <div class="flex-grow-1 p-4">           
             <h5 class="title"> <a href="detail.php?idx=<?=$row['PID']?>"> <?php echo $row['pName'];?></a></h5> 
+            
  <p class="date"><?php echo $row['regdate'];?></p>
             <p class="price"> <?php echo $row['price'];?> 원</p>
       </div>
