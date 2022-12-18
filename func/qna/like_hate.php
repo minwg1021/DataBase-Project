@@ -21,12 +21,16 @@ if($rsc->reid){
     exit;
 }
 
-$sql="INSERT INTO recommend
-(bid, userid, type)
+$sql="INSERT INTO recommend (bid, userid, type)
 VALUES(".$bid.", '".$_SESSION['UID']."', '".$type."')";
+
+
 $mysqli->query($sql) or die($mysqli->error);//어떤 게시물에 누가 추천이나 반대를 했는지 저장
 
-$result = $mysqli->query("select count(*) as cnt from recommend where type='".$type."' and bid=".$bid) or die("query error => ".$mysqli->error);//해당 게시물에 추천이나 반대가 몇개인지 확인
+$result = $mysqli->query("select count(*) as cnt from recommend where type='".$type."' and bid=".$bid) 
+
+
+or die("query error => ".$mysqli->error);//해당 게시물에 추천이나 반대가 몇개인지 확인
 $rs = $result->fetch_object();
 
 if($result){

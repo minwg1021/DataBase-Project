@@ -2,6 +2,8 @@
 include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/dbcon.php";
 
 $query = "SELECT * FROM members WHERE mid = ".$_SESSION['MID'];
+
+
 $user = $mysqli->query($query) or die("query error => ".$mysqli->error);
 $result = $user->fetch_object();
 

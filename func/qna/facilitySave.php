@@ -5,6 +5,8 @@
   $mid = $_SESSION['MID'];
   
   $query = "INSERT INTO fSave(mid, fid) VALUES ('".$mid."','".$index."');";
+
+  
   $result=$mysqli->query($query) or die($mysqli->error);
 
   if($result){

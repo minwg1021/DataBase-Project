@@ -86,7 +86,10 @@ include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/dbcon.php";
                 //$result = mysqli_query($mysqli, $sql);
                 
 
-                $q = "select members.userid, post.PID, post.pName, post.Image, post.description, post.price, post.regdate  from members,post where members.mid= post.uploader order by post.pid desc;";
+                $q = "select members.userid, post.PID, post.pName, post.Image, post.description, 
+                post.price, post.regdate  from members,post where members.mid= post.uploader order by post.pid desc;";
+
+                
                 $result2 = mysqli_query($mysqli, $q);
 
 

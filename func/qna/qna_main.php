@@ -3,8 +3,10 @@ include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/header.php";
 
 $search_keyword = $_GET['search_keyword'];
 
-if($search_keyword){
+if($search_keyword){ // search
+
     $search_where = " and (subject like '%".$search_keyword."%' or content like '%".$search_keyword."%')";
+    
 }
 
 $pageNumber  = $_GET['pageNumber']??1;//현재 페이지, 없으면 1

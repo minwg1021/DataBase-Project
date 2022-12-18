@@ -5,8 +5,12 @@ include $_SERVER["DOCUMENT_ROOT"]."/database-project/func/qna/dbcon.php";
 
   /// 1 = 게시판 정보를 가져오는 sql 코드
   // 2 = 게시글에 mid가 들어있기 때문에 작성자에 userid를 넣기 위한 코드
+
 $sql = "select * from Post Where PID = $index";
-$sql2 = "select * from members Where mid = (select uploader from Post Where PID = $index)";  
+
+$sql2 = "select * from members Where mid = (select uploader from Post Where PID = $index)"; 
+
+
 $result = mysqli_query($mysqli, $sql);
 $result2 = mysqli_query($mysqli, $sql2);
 $row = mysqli_fetch_array($result);
@@ -93,6 +97,7 @@ $row2 = mysqli_fetch_array($result2);
       </div>
     </nav>
     <div class="container mt-3" id="item-info">
+
     <?php 
     if($_SESSION['UID'] == $row['uploader'] ){?>
       <button class="btn btn-outline-secondary" id="edit" ><a  href="/database-project/edit.php?idx=<?=$row['PID']?>">수정하기</a></button>
@@ -121,7 +126,7 @@ echo '<img src="data:image;base64,'.base64_encode($row['Image']).'" alt="Image" 
             <textarea name = "contents" class="form-control" placeholder="댓글을 입력해주세요." id="reply" style="height: 60px"></textarea>
           </div>
           <div class="col-md-2">
-            <button type="submit" class="btn btn-secondary" id="memo_button">댓글등록</button>
+            <button type="submit" class="btn btn-secondary" id="memo_button">등록</button>
           </div>
         </form>
       </div>

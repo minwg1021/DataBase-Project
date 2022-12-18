@@ -13,6 +13,8 @@ $price = $_POST['price'];
 $date = date("Y/m/d");      
 
 //$query = "INSERT INTO Post (pName, Image, description, price, regdate, UID) values(null,'$title', '$content', '$date', 0, '$id', '$pw')";
+
+
 $sql = "update Post set pName='$pName', description='$description',
   regdate='$date', price = '$price' where PID='$index'";
 
