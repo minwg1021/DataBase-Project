@@ -30,7 +30,7 @@ if($parent_id){//parent_id가 있다는건 답글이라는 의미다.
 
 
 ?>
-        <form method="post" action="write_ok.php">
+        <form method="post" action="/database-project/func/qna/write_ok.php">
             <input type="hidden" name="bid" value="<?php echo $bid;?>">
             <input type="hidden" name="parent_id" value="<?php echo $parent_id;?>">
             <div class="mb-3">
